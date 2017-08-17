@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆</title>
+</head>
+<body>
+    <div agent = "center" name = "login">
+    <h1>用户登陆</h1></br>
+
+    {% if message %} {{ message }}{% endif %} </br>
+
+    <form method="POST">
+        用户名: {{ form.username }} </br>
+        密    码: {{ form.password }} </br>
+        <input type = "reset" value="重置"/>
+        <input type = "submit" value="提交"/>
+    </form>
+    </div>
+</body>
+</html>
