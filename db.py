@@ -13,3 +13,13 @@ def addUser(username,password):
     cur.execute(sql)
     conn.commit()
     conn.close()
+
+def isExisted(username,password):
+    sql = 'select * from user where username = "%s" and password = "%s" ' % (username,password)
+    cur.execute(sql)
+    result = cur.fetchall()
+    if (len(result)==0) :
+        return False
+    else :
+        return True
+    conn.close()
