@@ -2,13 +2,17 @@
 
 from flask import Flask
 from flask import render_template,url_for,request,redirect
-from wtforms import Form,StringField,PasswordField,validators
+from wtforms import Form,TextAreaField,StringField,PasswordField,validators
 from model import *
 app = Flask(__name__)
 
 class LoginForm(Form):
     username = StringField('username',[validators.Required()])
     password = PasswordField('password',[validators.Required()])
+class EntryForm(Form):                                          #定义前端form表单
+    content = TextAreaField('content',[validators.Required()])
+    sender = StringField('sender',[validators.Required()])
+
 
 @app.route('/login',methods = ['GET','POST'])
 def login():
@@ -31,6 +35,15 @@ def register():
         return render_template('login.html',message = "注册成功!", message2 = '注册', form = myform)
     return render_template('login.html',message2 = '注册',form = myform)
 
+@app.route('/entry',methods = ['GET', 'POST'])
+def entry():
+    myForm = EntryForm(request.form)
+    entryList = getAllEntry()
+    if request.method == 'POST':
+        e = Entry(myForm.content.data, myForm.sender.data)
+        e.add()
+        return  render_template('entry.html',entries = entryList, form = myForm)
+    return  render_template('entry.html',entries = entryList, form = myForm )
 
 
 
