@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Entry</title>
+</head>
+<body>
+    <div align="center" name = "form">
+        <form method="POST">
+        User    : {{ form.sender }} </br>
+        Message : {{ form.content }} </br>
+        <input type = "reset" value="重置"/>
+        <input type = "submit" value="提交"/>
+        </form>
+    </div>
+
+    <div align="center" name = "entry">
+       {% for entry in entries %}
+        <li>
+            {{ entry.content }}  Send By :{{ entry.sender }}
+        </li>
+        {% endfor %}
+    </div>
+
+
+
+</body>
+</html>

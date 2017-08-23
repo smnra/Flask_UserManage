@@ -6,7 +6,7 @@ from wtforms import Form,TextAreaField,StringField,PasswordField,validators
 from model import *
 app = Flask(__name__)
 
-class LoginForm(Form):
+class LoginForm(Form):                                          #定义前端form表单
     username = StringField('username',[validators.Required()])
     password = PasswordField('password',[validators.Required()])
 class EntryForm(Form):                                          #定义前端form表单
