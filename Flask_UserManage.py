@@ -3,8 +3,17 @@
 from flask import Flask
 from flask import render_template,url_for,request,redirect
 from wtforms import Form,TextAreaField,StringField,PasswordField,validators
+from flask_bootstrap import Bootstrap
+from flask_moment import Moment
 from model import *
+
+
+
+
+
 app = Flask(__name__)
+bootstrap = Bootstrap(app)
+moment = Moment(app)
 
 class LoginForm(Form):                                          #定义前端form表单
     username = StringField('username',[validators.Required()])
